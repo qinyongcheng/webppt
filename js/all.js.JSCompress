@@ -1,0 +1,11 @@
+﻿<jscompress public="http://www.jscompress.cn/" command="import-combineset">
+<combinefile path="all.js">
+    <auto value="1" />
+    <sourcefile path=".\zepto.js" />
+    <sourcefile path=".\touch.js" />
+    <sourcefile path=".\coffee.js" />
+    <sourcefile path=".\preload.js" />
+    <sourcefile path=".\loader.js" />
+    <sourcefile path=".\index.js" />
+</combinefile>
+</jscompress>

@@ -1,0 +1,12 @@
+﻿<jscompress public="http://www.jscompress.cn/" command="import-combineset">
+<combinefile path="all.css">
+    <css_fixedrelativeurl value="1" />
+    <auto value="1" />
+    <sourcefile path=".\reset.css" />
+    <sourcefile path=".\animate.css" />
+    <sourcefile path=".\animations.css" />
+    <sourcefile path=".\magic.css" />
+    <sourcefile path=".\modal.css" />
+    <sourcefile path=".\index.css" />
+</combinefile>
+</jscompress>
