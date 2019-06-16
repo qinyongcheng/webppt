@@ -10,17 +10,17 @@ H5单页应用幻灯片3D转场
 
 #### 使用说明
 
-##一、目录介绍
-###1、css目录：
-#####reset.css：将一些标签的样式属性在各浏览器中统一。 
-#####animate.css：动画类库
-#####animations.css：自定义页面转场动画类库
-#####index.css：单页应用的样式
-#####all.css：将以上用到的css文件合并在一起减少浏览器对服务的的请求次数，减轻服务器压力
-#####all.min.css：all.css文件的压缩文件，用于生产环境
-#####all.css.JSCompress：JSCompress合并压缩程序的配置文件
-#####建议自定义样式，放在单独style.css文件里
-###2、js目录：
+## 一、目录介绍
+### 1、css目录：
+##### reset.css：将一些标签的样式属性在各浏览器中统一。 
+##### animate.css：动画类库
+##### animations.css：自定义页面转场动画类库
+##### index.css：单页应用的样式
+##### all.css：将以上用到的css文件合并在一起减少浏览器对服务的的请求次数，减轻服务器压力
+##### all.min.css：all.css文件的压缩文件，用于生产环境
+##### all.css.JSCompress：JSCompress合并压缩程序的配置文件
+##### 建议自定义样式，放在单独style.css文件里
+### 2、js目录：
 #####zepto.js：类似jQuery库API的移动端DOM操作库。 
 #####touch.js：支持移动端触摸的zepto.js插件。 
 #####coffee.js：音符漂浮插件
