@@ -1,86 +1,13 @@
 <!DOCTYPE html>
-<html>
-
-	<head>
-		<title>HTML单页应用</title>
-		<meta name="description" content="HTML单页应用" />
-		<meta content="text/html;charset=utf-8">
-		<meta charset="utf-8">
-		<meta name="viewport" content="initial-scale=1, maximum-scale=1,user-scalable=no">
-		<!--是否设置自动将你的数字转化为拨号连接|告诉设备不识别邮箱，点击之后不自动发送 |禁止跳转至地图 -->
-		<meta name="format-detection" content="telephone=no,email=no,adress=no" />
-		<link rel="stylesheet" type="text/css" href="css/all.min.css" />
-		<!--所有的系统css放在里面-->
-		<!--自定义css单独文件存放--> 
-		<style> 
-			.img1 {
-				width: 100%; 
-				height: 100%;
-				position: absolute;
-				left: 0%;
-				top: 0%;
-			}
-			
-		</style>
-	</head>
-
-	<body>
-		<div class="wrap" data-options="pageIndicatorColor:['#99FF33','#CC0033','#99FFCC','#999933','#9966CC','#9999FF']">
-			<div class="page page-1" data-animation="34">         
-				<!--<div class="stars"></div>-->
-				<!--为了图片预加载，将图片路径放在data-src属性里-->
-				<!--背景图片也支持预加载,但是要加类名称 preload-img  如:-->
-				<div class='preload-bg img1' data-src='img/my/8.jpg'></div>
-				<img data-src="img/my/t15.png" class="page-center threeD pt-page-rotateCubeLeftIn pt-page-delay500" />
-			</div>
-			<div class="page page-2" data-animation="51">
-				<div class="slide page-2-1">
-					<img data-src="img/my/t15.png" class="page-center pt-page-flipInRight pt-page-delay500" />
-				</div>
-				<div class="slide page-2-2" data-animation="32">
-					<p>page-2-2</p>
-					<p>page-2-2</p> 
-				</div>
-				<div class="slide page-2-3">
-					<p>page-2-2</p>
-					<p>page-2-2</p>
-				</div>
-				<div class="slide page-2-4">  
-					<p>page-2-2</p>
-					<p>page-2-2</p>
-				</div>
-				<div class="slide page-2-5">
-					<p>page-2-2</p>
-					<p>page-2-2</p>
-				</div>
-			</div>
-			<div class="page page-3">
-			</div>
-			<div class="page page-4">
-			</div>
-			<div class="page page-5">
-			</div> 
-			<div class="page page-6">
-			</div>
-			<img class="img-up pt-page-moveIconUp" src="img/icon_up.png" />
-		</div>
-		<!--音乐地址要改 data-src-->
-		<!-- 声音控件 -->
-		<section class='u-audio' data-src='media/music2.mp3'>
-			<p id='coffee_flow' class="btn_audio">
-				<strong class='txt_audio z-hide'>关闭</strong>
-				<span class='css_sprite01 audio_open rotate360 '></span>
-			</p>
-		</section>
-		<!-- 声音控件 end--> 
-		<script src="js/all.min.js"></script>  
-		<!--所有的js放在里面-->
-		<script>
-			setTimeout(function(){
-				
-				
-			},10000)
-		</script>
-	</body>
-
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" href="/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Webppt</title>
+  </head>
+  <body>
+    <div id="app"></div>
+    <script type="module" src="/src/main.js"></script>
+  </body>
 </html>
