@@ -1,17 +1,27 @@
 {
 	"name": "webppt",
-	"version": "1.0.4",
+	"version": "1.0.5",
+	"repository": {
+		"type": "git",
+		"url": "https://gitee.com/qinyongcheng/webppt.git",
+		"directory": "packages/webppt"
+	},
+	"description": "web ppt.",
+	"keywords": ["slide", "ppt", "web ppt"],
+	"homepage": "https://gitee.com/qinyongcheng/webppt",
+	"bugs": "https://gitee.com/qinyongcheng/webppt/issues",
+	"author": "Qin yongcheng",
 	"files": [
 		"dist"
 	],
-	"main": "./dist/webppt.umd.js",
-	"module": "./dist/webppt.es.js",
-	"unpkg": "./dist/webppt.min.js",
+	"main": "./dist/index.umd.js",
+	"module": "./dist/index.es.js",
+	"unpkg": "./dist/index.min.js",
 	"style": "./dist/index.css",
 	"exports": {
 		".": {
-			"import": "./dist/webppt.es.js",
-			"require": "./dist/webppt.umd.js"
+			"import": "./dist/index.es.js",
+			"require": "./dist/index.umd.js"
 		},
 		"./dist/index.css": {
 			"import": "./dist/index.css",
