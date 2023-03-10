@@ -406,7 +406,7 @@ const Webppt = (function() {
 			return;
 		}
 		//当前页显示
-		$nowPage.addClass("show threeD"); //.find(".hide").removeClass("hide");
+		$nowPage.addClass("show threeD perspective"); //.find(".hide").removeClass("hide");
 		//当前页下的第一个幻灯片显示
 		$nowPage.children(".slide").first().addClass("show");
 		//上下翻页时 ，为当前页幻灯片添加指示条
@@ -614,7 +614,7 @@ const Webppt = (function() {
 				outClass: 'pt-page-rotateBottomSideFirst',
 				inClass: 'pt-page-moveFromBottom pt-page-delay200 pt-page-ontop'
 			},
-			{
+			{//2
 				outClass: 'pt-page-flipOutRight',
 				inClass: 'pt-page-flipInLeft pt-page-delay500'
 			},
@@ -752,7 +752,7 @@ const Webppt = (function() {
 			},
 			{
 				outClass: 'pt-page-rotateSidesOut',
-				inClass: 'pt-page-rotateSidesIn pt-page-delay200'
+				inClass: 'pt-page-rotateSidesIn pt-page-delay500'
 			},
 			{
 				outClass: 'pt-page-rotateSlideOut',
