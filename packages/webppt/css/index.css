@@ -9,13 +9,12 @@ html,
 body {
 	width: 100%;
 	height: 100%;
-	font-size: 14px;
-	color: #fff;
+	font-size: 16px;
+	color:#333;
 }
 
 body {
 	overflow: hidden;
-	background: #333;
 }
 
 .webppt-wrap,

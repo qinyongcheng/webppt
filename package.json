@@ -1,6 +1,6 @@
 {
 	"name": "webppt",
-	"version": "1.0.5",
+	"version": "1.0.7",
 	"repository": {
 		"type": "git",
 		"url": "https://gitee.com/qinyongcheng/webppt.git",
@@ -23,9 +23,9 @@
 			"import": "./dist/index.es.js",
 			"require": "./dist/index.umd.js"
 		},
-		"./dist/index.css": {
-			"import": "./dist/index.css",
-			"require": "./dist/index.css"
+		"./dist/style.css": {
+			"import": "./dist/style.css",
+			"require": "./dist/style.css"
 		}
 	},
 	"scripts": {
@@ -38,7 +38,6 @@
 	},
 	"dependencies": {
 		"animate.css": "^4.1.1",
-		"magic.css": "^1.4.8",
 		"n-zepto": "^1.2.0",
 		"screenfull": "^6.0.2"
 	},

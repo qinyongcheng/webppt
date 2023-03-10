@@ -18,27 +18,97 @@ const Webppt = (function() {
 		loadingAnimate: true, //打开时是否显示加载动画。
 		pageIndicator: true, //是否添加页面指示器  		
 		preload: true, //设置是否自动预加载图片,默认自动预加载。自动预加载是页面一打开就自动预加载
-		preLoadPages: 4, //预加载图片的页数
+		preLoadPages: 3, //预加载图片的页数
 		pageIndicatorColor: [] //指示器颜色值
 	};
-
-	//总页数	
-	var totalPage = $(".webppt-wrap .page").each(function(i, e) {
-		//给每个页面添加唯一标志,给每个页面下的幻灯片添加唯一标志
-		$(this).data('id', "page-" + (i + 1)).children(".slide").each(function(i2, e2) {
-			$(this).data('id', "page-" + (i + 1) + "-" + (i2 + 1));
-		})
-	}).size();
-	var $wrap = $(".webppt-wrap").addClass("perspective"); //添加css3d透视
 	/*初始化参数*/
 	function init() {
-		var options = $wrap.data("options");
+		//总页数
+		page._totalPage = $(".webppt-wrap .page").each(function(i, e) {
+			//给每个页面添加唯一标志,给每个页面下的幻灯片添加唯一标志
+			var pageid = "page-" + (i + 1);
+			$(this).data('id', pageid).addClass(pageid).children(".slide").each(function(i2, e2) {
+				var slideid = "page-" + (i + 1) + "-" + (i2 + 1);
+				$(this).data('id', slideid).addClass(slideid);
+			})
+		}).size();
+		page.$wrap = $(".webppt-wrap").addClass("perspective"); //添加css3d透视
+		var options = page.$wrap.data("options");
 		if (options != undefined) {
 			options = "{" + options + "}";
 			options = JSON.parse(options)
 			//options = eval("(" + options + ")");
 			$.extend(page, options);
 		}
+
+		//向上滑动
+		$(document).swipeUp(function() {
+			page.up();
+		})
+		//向下滑动
+		$(document).swipeDown(function() {
+			page.down();
+		})
+		//左滑动，屏增加
+		$(document).swipeLeft(function() {
+			page.left();
+		})
+		//右滑动，屏减少
+		$(document).swipeRight(function() {
+			page.right();
+		});
+		$(document).on("keydown", function(t) {
+			switch (t.keyCode) {
+				case 65:
+					page.right();
+					break;
+				case 37:
+					page.right();
+					break;
+				case 68:
+					page.left();
+					break;
+				case 39:
+					page.left();
+					break;
+				case 38:
+					page.down();
+					break;
+				case 87:
+					page.down();
+					break;
+				case 40:
+					page.up();
+					break;
+				case 83:
+					page.up();
+					break;
+				case 32:
+					page.leftUp();
+					break
+			}
+		})
+		//如果不支持触摸,比如PC端，则单击向上图标切换页面
+		if (!document.hasOwnProperty("ontouchstart")) {
+			$(".img-up").on('click', function(e) {
+				page.up();
+			})
+			$(".img-left").on('click', function(e) {
+				page.down();
+			})
+			$(".img-right").on('click', function(e) {
+				page.up();
+			})
+		}
+
+		//全屏
+		const element = page.$wrap[0];
+		$('.screenfull-menu').on('click', event => {
+			if (screenfull.isEnabled) {
+				screenfull.toggle(element);
+			}
+		});
+
 	}
 	/*新页*/
 	var now = {
@@ -68,23 +138,22 @@ const Webppt = (function() {
 		if (isAnimating) return;
 		last.row = now.row;
 		last.col = now.col;
-		if (last.row < totalPage) {
+		if (last.row < page._totalPage) {
 			now.row = last.row + 1;
 			now.col = 1;
-			pageMove(towards.up, false);
 		} else if (page.loop) {
 			now.row = 1;
 			now.col = 1;
-			pageMove(towards.up, false);
 		}
+		pageMove(towards.up, false);
 	}
 	//切换页
 	page.switchPage = function(pageNo) {
 		if (isAnimating) return;
 		//切换页在1-总页数之间
-		if (pageNo >= 1 && pageNo <= totalPage) {
+		if (pageNo >= 1 && pageNo <= page._totalPage) {
 			last.row = now.row; //上一页
-			last.col = 1;
+			last.col = now.col;
 			now.row = pageNo; //当前页等于要切换的页面
 			now.col = 1;
 			pageMove(towards.up, false);
@@ -99,9 +168,8 @@ const Webppt = (function() {
 		if (last.row > 1) {
 			now.row = last.row - 1;
 			now.col = 1;
-			pageMove(towards.down, false);
 		} else if (page.loop) {
-			now.row = totalPage;
+			now.row = page._totalPage;
 			now.col = 1;
 			//如果预加载图片  则刚开始不支持向下翻页，便于预加载图片
 			if (page.preload && now.row >= preLoadPage) {
@@ -110,8 +178,8 @@ const Webppt = (function() {
 				page.up();
 				return;
 			}
-			pageMove(towards.down, false);
 		}
+		pageMove(towards.down, false);
 	}
 	//向左幻灯片
 	page.left = function() {
@@ -119,22 +187,22 @@ const Webppt = (function() {
 		last.row = now.row;
 		last.col = now.col;
 		var pageSlides = $(getPageSlidesSelector(last)).size();
-		if (last.row >= 1 && last.row <= totalPage && pageSlides > 1) {
+		if (last.row >= 1 && last.row <= page._totalPage && pageSlides > 1) {
 			now.row = last.row;
 			if (last.col < pageSlides) {
 				now.col = last.col + 1;
-				pageMove(towards.left, false);
 			} else if (page.loop) {
 				now.col = 1;
-				pageMove(towards.left, false);
 			}
+			pageMove(towards.left, false);
 		}
 	}
 	page.leftUp = function() {
 		if (isAnimating) return;
 		last.row = now.row, last.col = now.col;
 		var t = $(getPageSlidesSelector(last)).size();
-		last.row >= 1 && last.row <= totalPage && t > 1 ? (now.row = last.row, last.col < t ? (now.col =
+		last.row >= 1 && last.row <= page._totalPage && t > 1 ? (now.row = last.row, last.col < t ? (now
+			.col =
 			last.col + 1, pageMove(towards.left, !1)) : page.up()) : page.up()
 	}
 	//向右幻灯片
@@ -143,15 +211,14 @@ const Webppt = (function() {
 		last.row = now.row;
 		last.col = now.col;
 		var pageSlides = $(getPageSlidesSelector(last)).size();
-		if (last.row >= 1 && last.row <= totalPage && pageSlides > 1) {
+		if (last.row >= 1 && last.row <= page._totalPage && pageSlides > 1) {
 			now.row = last.row;
 			if (last.col > 1) {
 				now.col = last.col - 1;
-				pageMove(towards.right, false);
 			} else if (page.loop) {
 				now.col = pageSlides;
-				pageMove(towards.right, false);
 			}
+			pageMove(towards.right, false);
 		}
 	}
 	page.switchSlide = function(no) {
@@ -162,65 +229,6 @@ const Webppt = (function() {
 		now.row = last.row;
 		pageMove(towards.left, false);
 
-	}
-	//向上滑动
-	$(document).swipeUp(function() {
-		page.up();
-	})
-	//向下滑动
-	$(document).swipeDown(function() {
-		page.down();
-	})
-	//左滑动，屏增加
-	$(document).swipeLeft(function() {
-		page.left();
-	})
-	//右滑动，屏减少
-	$(document).swipeRight(function() {
-		page.right();
-	});
-	$(document).on("keydown", function(t) {
-		switch (t.keyCode) {
-			case 65:
-				page.right();
-				break;
-			case 37:
-				page.right();
-				break;
-			case 68:
-				page.left();
-				break;
-			case 39:
-				page.left();
-				break;
-			case 38:
-				page.down();
-				break;
-			case 87:
-				page.down();
-				break;
-			case 40:
-				page.up();
-				break;
-			case 83:
-				page.up();
-				break;
-			case 32:
-				page.leftUp();
-				break
-		}
-	})
-	//如果不支持触摸,比如PC端，则单击向上图标切换页面
-	if (!document.hasOwnProperty("ontouchstart")) {
-		$(".img-up").on('click', function(e) {
-			page.up();
-		})
-		$(".img-left").on('click', function(e) {
-			page.down();
-		})
-		$(".img-right").on('click', function(e) {
-			page.up();
-		})
 	}
 
 	//启动
@@ -253,7 +261,7 @@ const Webppt = (function() {
 			preLoadPage = preLoadPage + page.preLoadPages;
 			var selector = "";
 			var i = firststart ? now.row : now.row + 1;
-			var len = preLoadPage > totalPage ? totalPage + 1 : preLoadPage;
+			var len = preLoadPage > page._totalPage ? page._totalPage + 1 : preLoadPage;
 			for (; i < len; i++) {
 				selector = `${selector},.page-${i} img,.page-${i} .preload-bg,.page-${i}.preload-bg`;
 			}
@@ -304,7 +312,7 @@ const Webppt = (function() {
 		}
 	}
 
-	function getPageSelector(page, notslide) {
+	function getPageSelector(page, notslide) { // notslide表示不包含子幻灯片
 		page = page || now;
 		if (notslide) {
 			return ".page-" + page.row;
@@ -315,9 +323,15 @@ const Webppt = (function() {
 		}
 		return ".page-" + page.row;
 	}
-	page.getNextPageSelector = function() {
-		var n = now.row + 1 > totalPage ? 1 : now.row + 1;
-		return ".page-" + n;
+
+	function getLastPageSelector() { // 获取上一页			
+		//同一行不同列
+		if (last.row == now.row && last.col != now.col) {
+			return ".page-" + last.row + "-" + last.col;
+		} else if (last.row != now.row && last.col > 1) {
+			return `.page-${last.row}-${last.col},.page-${last.row}`;
+		}
+		return ".page-" + last.row;
 	}
 
 	function getPageSlidesSelector(page, notslide) {
@@ -366,7 +380,7 @@ const Webppt = (function() {
 		//添加页面指示器
 		if (page.pageIndicator) {
 			var $ul = $('<ul class="page-indicator"></ul>').appendTo(".webppt-wrap");
-			for (var i = 0; i < totalPage; i++) {
+			for (var i = 0; i < page._totalPage; i++) {
 				var $li = $('<li><span></span></li>').data("id", i + 1)
 					.attr("id", getPageIndicatorID(now, i + 1)).css("background", page.pageIndicatorColor[i] ||
 						getRandomSafeColor())
@@ -380,8 +394,8 @@ const Webppt = (function() {
 		}
 	}
 	//页面切换
-	function pageMove(tw, start) {
-		var lastPage = getPageSelector(last),
+	function pageMove(tw, start) { //start表示是启动第一个
+		var lastPage = getLastPageSelector(),
 			nowPage = getPageSelector(now),
 			$lastPage = $(lastPage),
 			$nowPage = $(nowPage),
@@ -392,7 +406,7 @@ const Webppt = (function() {
 			return;
 		}
 		//当前页显示
-		$nowPage.addClass("show threeD").find(".hide").removeClass("hide");
+		$nowPage.addClass("show threeD"); //.find(".hide").removeClass("hide");
 		//当前页下的第一个幻灯片显示
 		$nowPage.children(".slide").first().addClass("show");
 		//上下翻页时 ，为当前页幻灯片添加指示条
@@ -434,7 +448,6 @@ const Webppt = (function() {
 		if (page.preload) {
 			preLoadImg(false, tw);
 		}
-
 		var animationClassObj = page.getAnimationClass($nowPage.data("animation")); //获取当前页的动画类型
 		var outClass = animationClassObj.outClass;
 		var inClass = animationClassObj.inClass;
@@ -755,13 +768,6 @@ const Webppt = (function() {
 		contextmenu();
 		return this;
 	};
-	//全屏
-	const element = $wrap[0];
-	$('.screenfull-menu').on('click', event => {
-		if (screenfull.isEnabled) {
-			screenfull.toggle(element);
-		}
-	});
 	return page;
 })();
 export default Webppt;
