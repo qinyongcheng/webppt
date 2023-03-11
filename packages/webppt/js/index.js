@@ -614,7 +614,7 @@ const Webppt = (function() {
 				outClass: 'pt-page-rotateBottomSideFirst',
 				inClass: 'pt-page-moveFromBottom pt-page-delay200 pt-page-ontop'
 			},
-			{//2
+			{ //2
 				outClass: 'pt-page-flipOutRight',
 				inClass: 'pt-page-flipInLeft pt-page-delay500'
 			},
@@ -765,8 +765,7 @@ const Webppt = (function() {
 	page.start = start;
 	page.audio = audio;
 	page.contextmenu = function() {
-		contextmenu();
-		return this;
+		return contextmenu();
 	};
 	return page;
 })();

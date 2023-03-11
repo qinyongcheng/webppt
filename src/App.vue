@@ -15,6 +15,22 @@
 		<div class="css_icon img-right pt-page-moveIconRight"></div>
 		<div class="screenfull-menu">全屏</div>
 	</div>
+	<div class="md-modal md-effect-4">
+		<div class="md-body">
+			<h3 class="md-title">
+				<span></span>
+				<button class="btn md-close">关闭</button>
+			</h3>
+			<div class="md-content">
+				<ul>
+					<li>上一页</li>
+					<li>下一页</li>
+					<li>结束放映</li>
+				</ul>
+			</div>
+			<div class="md-footer"></div>
+		</div>
+	</div>
 </template>
 <script setup lang="ts">
 import { ref, reactive, toRefs, onMounted } from 'vue';
@@ -27,7 +43,7 @@ const state = reactive({
 const { value1 } = toRefs(state);
 
 onMounted(() => {
-	webppt.start();
+	webppt.start().contextmenu();
 });
 </script>
 <style>

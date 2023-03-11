@@ -9,13 +9,13 @@
 ### (一)安装
 #### 1.通过cdn安装（推荐）
 ```
-<link rel="stylesheet" type="text/css" href="https://unpkg.com/webppt@1.0.6/dist/style.css" />
-<script src="https://unpkg.com/webppt@1.0.6/dist/index.min.js"></script>
+<link rel="stylesheet" type="text/css" href="https://unpkg.com/webppt@1.0.10/dist/style.css" />
+<script src="https://unpkg.com/webppt@1.0.10/dist/index.min.js"></script>
 ```
 #### 2.直接下载安装
-[css下载](https://unpkg.com/webppt@1.0.6/dist/style.css)
+[css下载](https://unpkg.com/webppt@1.0.10/dist/style.css)
 
-[js下载](https://unpkg.com/webppt@1.0.6/dist/index.min.js)">
+[js下载](https://unpkg.com/webppt@1.0.10/dist/index.min.js)">
 ### (二)编写PPT
 #### （1）最简单PPT
 ```
@@ -32,7 +32,7 @@
 		Webppt.start()
 	</script>
 ```
-#### （2）PPT页多张幻灯片
+#### （2）PPT页子幻灯片
 每一页PPT下可以加多张子幻灯片。
 ```
     <style>
@@ -73,77 +73,77 @@
 		Webppt.start()
 	</script>
 ```
-内置转场动画如下表： 
+内置转场动画如下表（动画样式类由out出场和in入场样式类组成）： 
 
-|动画名称	|动画值	|
-|--	|--	|
-|向左推移	|1	|
-|向右推移	|2	|
-|向上推移	|3	|
-|向下推移	|4	|
-|向左谈出	|5	|
-|向右淡出	|6	|
-|向上淡出	|7	|
-|向下淡出	|8	|
-|左推移淡出	|9	|
-|右推移淡出	|10	|
-|上推移淡出	|11	|
-|下推移淡出	|12	|
-|向左缓动	|13	|
-|向右缓动	|14	|
-|向上缓动	|15	|
-|向下缓动	|16	|
-|左移缩小消失	|17	|
-|右移缩小消失	|18	|
-|上移缩小消失	|19	|
-|下移缩小消失	|20	|
-|缩小出放大进1|21	|
-|缩小出放大进2|22	|
-|左移出放大进	|23	|
-|右移出放大进	|24	|
-|上移出放大进	|25	|
-|下移出放大进	|26	|
-|中心缩小出放大进	|27	|
-|右旋出左移进	|28	|
-|左旋出右移进	|29	|
-|上旋出下移进	|30	|
-|下旋出上移进	|31	|
-|右翻转出左翻转进	|32	|
-|左翻转出右翻转进	|33	|
-|上翻转出下翻转进	|34	|
-|下翻转出上翻转进	|35	|
-|右上角跌落	|36	|
-|新闻快报	|37	|
-|左推	|38	|
-|右推	|39	|
-|上推	|40	|
-|下推	|41	|
-|左推右拉	|42	|
-|右推左拉	|43	|
-|上推下拉	|44	|
-|下推上拉	|45	|
-|向左折叠	|46	|
-|向右折叠	|47	|
-|向上折叠	|48	|
-|向下折叠	|49	|
-|左反折叠	|50	|
-|右反折叠	|51	|
-|上反折叠	|52	|
-|下反折叠	|53	|
-|向左缩小	|54	|
-|向右缩小	|55	|
-|向上缩小	|56	|
-|向下缩小	|57	|
-|左旋转立方体	|58	|
-|右旋转立方体	|59	|
-|上旋转立方体	|60	|
-|下旋转立方体	|61	|
-|左旋转木马	|62	|
-|右旋转木马	|63	|
-|上旋转木马	|64	|
-|下旋转木马	|65	|
-|侧面	|66	|
-|滑动	|67	|
+|动画名称	|动画值	|动画样式类|
+|--	|--	|--	|  
+|向左推移	|1	|outClass: 'pt-page-moveToLeft',inClass: 'pt-page-moveFromRight' |
+|向右推移	|2	|outClass: 'pt-page-moveToRight',inClass: 'pt-page-moveFromLeft'    |
+|向上推移	|3	|outClass: 'pt-page-moveToTop',inClass: 'pt-page-moveFromBottom'    |
+|向下推移	|4	|outClass: 'pt-page-moveToBottom',inClass: 'pt-page-moveFromTop'    |
+|向左谈出	|5	|outClass: 'pt-page-fade',inClass: 'pt-page-moveFromRight pt-page-ontop'    |
+|向右淡出	|6	|outClass: 'pt-page-fade',inClass: 'pt-page-moveFromLeft pt-page-ontop'    |
+|向上淡出	|7	|outClass: 'pt-page-fade',inClass: 'pt-page-moveFromBottom pt-page-ontop'    |
+|向下淡出	|8	|outClass: 'pt-page-fade',inClass: 'pt-page-moveFromTop pt-page-ontop'    |
+|左推移淡出	|9	|outClass: 'pt-page-moveToLeftFade',inClass: 'pt-page-moveFromRightFade'    |
+|右推移淡出	|10	|outClass: 'pt-page-moveToRightFade',inClass: 'pt-page-moveFromLeftFade'    |
+|上推移淡出	|11	|outClass: 'pt-page-moveToTopFade',inClass: 'pt-page-moveFromBottomFade'    |
+|下推移淡出	|12	|outClass: 'pt-page-moveToBottomFade',inClass: 'pt-page-moveFromTopFade'    |
+|向左缓动	|13	|outClass: 'pt-page-moveToLeftEasing pt-page-ontop',inClass: 'pt-page-moveFromRight'    |
+|向右缓动	|14	|outClass: 'pt-page-moveToRightEasing pt-page-ontop',inClass: 'pt-page-moveFromLeft'    |
+|向上缓动	|15	|outClass: 'pt-page-moveToTopEasing pt-page-ontop',inClass: 'pt-page-moveFromBottom'    |
+|向下缓动	|16	|outClass: 'pt-page-moveToBottomEasing pt-page-ontop',inClass: 'pt-page-moveFromTop'    |
+|左移缩小消失	|17	|outClass: 'pt-page-scaleDown',inClass: 'pt-page-moveFromRight pt-page-ontop'    |
+|右移缩小消失	|18	|outClass: 'pt-page-scaleDown',inClass: 'pt-page-moveFromLeft pt-page-ontop'    |
+|上移缩小消失	|19	|outClass: 'pt-page-scaleDown',inClass: 'pt-page-moveFromBottom pt-page-ontop'    |
+|下移缩小消失	|20	|outClass: 'pt-page-scaleDown',inClass: 'pt-page-moveFromTop pt-page-ontop'    |
+|缩小出放大进1|21	|outClass: 'pt-page-scaleDown',inClass: 'pt-page-scaleUpDown pt-page-delay300'    |
+|缩小出放大进2|22	|outClass: 'pt-page-scaleDownUp',inClass: 'pt-page-scaleUp pt-page-delay300'    |
+|左移出放大进	|23	|outClass: 'pt-page-moveToLeft pt-page-ontop',inClass: 'pt-page-scaleUp'    |
+|右移出放大进	|24	|outClass: 'pt-page-moveToRight pt-page-ontop',inClass: 'pt-page-scaleUp'    |
+|上移出放大进	|25	|outClass: 'pt-page-moveToTop pt-page-ontop',inClass: 'pt-page-scaleUp'    |
+|下移出放大进	|26	|outClass: 'pt-page-moveToBottom pt-page-ontop',inClass: 'pt-page-scaleUp'    |
+|中心缩小出放大进	|27	|outClass: 'pt-page-scaleDownCenter',inClass: 'pt-page-scaleUpCenter pt-page-delay400'    |
+|右旋出左移进	|28	|outClass: 'pt-page-rotateRightSideFirst',inClass: 'pt-page-moveFromRight pt-page-delay200 pt-page-ontop'    |
+|左旋出右移进	|29	|outClass: 'pt-page-rotateLeftSideFirst',inClass: 'pt-page-moveFromLeft pt-page-delay200 pt-page-ontop'    |
+|上旋出下移进	|30	|outClass: 'pt-page-rotateTopSideFirst',inClass: 'pt-page-moveFromTop pt-page-delay200 pt-page-ontop'    |
+|下旋出上移进	|31	|outClass: 'pt-page-rotateBottomSideFirst',inClass: 'pt-page-moveFromBottom pt-page-delay200 pt-page-ontop'    |
+|右翻转出左翻转进	|32	|outClass: 'pt-page-flipOutRight',inClass: 'pt-page-flipInLeft pt-page-delay500'    |
+|左翻转出右翻转进	|33	|outClass: 'pt-page-flipOutLeft',inClass: 'pt-page-flipInRight pt-page-delay500'    |
+|上翻转出下翻转进	|34	|outClass: 'pt-page-flipOutTop',inClass: 'pt-page-flipInBottom pt-page-delay500'    |
+|下翻转出上翻转进	|35	|outClass: 'pt-page-flipOutBottom',inClass: 'pt-page-flipInTop pt-page-delay500'    |
+|右上角跌落	|36	|outClass: 'pt-page-rotateFall pt-page-ontop',inClass: 'pt-page-scaleUp'    |
+|新闻快报	|37	|outClass: 'pt-page-rotateOutNewspaper',inClass: 'pt-page-rotateInNewspaper pt-page-delay500'    |
+|左推	|38	|outClass: 'pt-page-rotatePushLeft',inClass: 'pt-page-moveFromRight'    |
+|右推	|39	|outClass: 'pt-page-rotatePushRight',inClass: 'pt-page-moveFromLeft'    |
+|上推	|40	|outClass: 'pt-page-rotatePushTop',inClass: 'pt-page-moveFromBottom'    |
+|下推	|41	| outClass: 'pt-page-rotatePushBottom',inClass: 'pt-page-moveFromTop'   |
+|左推右拉	|42	|outClass: 'pt-page-rotatePushLeft',inClass: 'pt-page-rotatePullRight pt-page-delay180'    |
+|右推左拉	|43	|outClass: 'pt-page-rotatePushRight',inClass: 'pt-page-rotatePullLeft pt-page-delay180'    |
+|上推下拉	|44	|outClass: 'pt-page-rotatePushTop',inClass: 'pt-page-rotatePullBottom pt-page-delay180'    |
+|下推上拉	|45	|outClass: 'pt-page-rotatePushBottom',inClass: 'pt-page-rotatePullTop pt-page-delay180'    |
+|向左折叠	|46	|outClass: 'pt-page-rotateFoldLeft',inClass: 'pt-page-moveFromRightFade'    |
+|向右折叠	|47	|outClass: 'pt-page-rotateFoldRight',inClass: 'pt-page-moveFromLeftFade'    |
+|向上折叠	|48	|outClass: 'pt-page-rotateFoldTop',inClass: 'pt-page-moveFromBottomFade'    |
+|向下折叠	|49	|outClass: 'pt-page-rotateFoldBottom',inClass: 'pt-page-moveFromTopFade'    |
+|左反折叠	|50	|outClass: 'pt-page-moveToRightFade',inClass: 'pt-page-rotateUnfoldLeft'    |
+|右反折叠	|51	|outClass: 'pt-page-moveToLeftFade',inClass: 'pt-page-rotateUnfoldRight'    |
+|上反折叠	|52	|outClass: 'pt-page-moveToBottomFade',inClass: 'pt-page-rotateUnfoldTop'    |
+|下反折叠	|53	| outClass: 'pt-page-moveToTopFade',inClass: 'pt-page-rotateUnfoldBottom'   |
+|向左缩小	|54	| outClass: 'pt-page-rotateRoomLeftOut pt-page-ontop',inClass: 'pt-page-rotateRoomLeftIn'   |
+|向右缩小	|55	|outClass: 'pt-page-rotateRoomRightOut pt-page-ontop',inClass: 'pt-page-rotateRoomRightIn'    |
+|向上缩小	|56	| outClass: 'pt-page-rotateRoomTopOut pt-page-ontop',inClass: 'pt-page-rotateRoomTopIn'   |
+|向下缩小	|57	|outClass: 'pt-page-rotateRoomBottomOut pt-page-ontop',inClass: 'pt-page-rotateRoomBottomIn'    |
+|左旋转立方体	|58	|outClass: 'pt-page-rotateCubeLeftOut pt-page-ontop',inClass: 'pt-page-rotateCubeLeftIn'    |
+|右旋转立方体	|59	|outClass: 'pt-page-rotateCubeRightOut pt-page-ontop',inClass: 'pt-page-rotateCubeRightIn'    |
+|上旋转立方体	|60	|outClass: 'pt-page-rotateCubeTopOut pt-page-ontop',inClass: 'pt-page-rotateCubeTopIn'    |
+|下旋转立方体	|61	|outClass: 'pt-page-rotateCubeBottomOut pt-page-ontop',inClass: 'pt-page-rotateCubeBottomIn'    |
+|左旋转木马	|62	| outClass: 'pt-page-rotateCarouselLeftOut pt-page-ontop',inClass: 'pt-page-rotateCarouselLeftIn'   |
+|右旋转木马	|63	|outClass: 'pt-page-rotateCarouselRightOut pt-page-ontop',inClass: 'pt-page-rotateCarouselRightIn'    |
+|上旋转木马	|64	|outClass: 'pt-page-rotateCarouselTopOut pt-page-ontop',inClass: 'pt-page-rotateCarouselTopIn'    |
+|下旋转木马	|65	| outClass: 'pt-page-rotateCarouselBottomOut pt-page-ontop',inClass: 'pt-page-rotateCarouselBottomIn'   |
+|侧面	|66	|outClass: 'pt-page-rotateSidesOut',inClass: 'pt-page-rotateSidesIn pt-page-delay500'    |
+|滑动	|67	| outClass: 'pt-page-rotateSlideOut',inClass: 'pt-page-rotateSlideIn'   |
 
 #### （4）设置页面元素动画
 ```
@@ -199,7 +199,29 @@
 		<div class="screenfull-menu">全屏</div>
 	</div>
 ```
-
+#### （7）设置右键菜单
+在body下面添加如下代码：
+```
+   <div class="md-modal md-effect-4">
+   	<div class="md-body">
+   		<h3 class="md-title">
+   			<span>操作选项</span>
+   			<button class="btn md-close">关闭</button>
+   		</h3>
+   		<div class="md-content">
+   			<ul>
+   				<li>上一页</li>
+   				<li>下一页</li>
+   				<li>结束放映</li>
+   			</ul>
+   		</div>
+   		<div class="md-footer"></div>
+   	</div>
+   </div>
+   <script>
+   	Webppt.start().contextmenu();//设置上下文
+   </script>
+```
 ## 二、vue项目中使用
 #### 1.npm安装（推荐）
 ```
