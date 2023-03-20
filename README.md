@@ -9,8 +9,8 @@
 ### (一)安装
 #### 1.通过cdn安装（推荐）
 ```
-<link rel="stylesheet" type="text/css" href="https://unpkg.com/webppt@1.0.10/dist/style.css" />
-<script src="https://unpkg.com/webppt@1.0.10/dist/index.min.js"></script>
+<link rel="stylesheet" type="text/css" href="https://unpkg.com/webppt@1.0.11/dist/style.css" />
+<script src="https://unpkg.com/webppt@1.0.11/dist/index.min.js"></script>
 ```
 #### 2.直接下载安装
 [css下载](https://unpkg.com/webppt@1.0.10/dist/style.css)
