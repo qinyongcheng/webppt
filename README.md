@@ -1,7 +1,7 @@
 # 🎨 webppt
 > 一个基于 h5 + css3 + JavaScript 的开源在线演示文稿（幻灯片）框架，可以帮助用户使用web浏览器搭建一个漂亮的网页版PPT。
 
-<b>在线体验地址：[https://qinyongcheng.github.io/webppt/](https://pipipi-pikachu.github.io/webppt/)</b>
+<b>在线体验地址：[https://qinyongcheng.github.io/webppt/](https://qinyongcheng.github.io/webppt/)</b>
 
 
 # 🚀 使用
